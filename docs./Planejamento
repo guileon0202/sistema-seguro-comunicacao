@@ -1,1 +1,28 @@
+TECNOLOGIAS E ETAPAS
 
+    Cadastro de Usuário → Hash de senha com bcrypt:
+    Durante o cadastro, a senha do usuário é protegida antes de ser armazenada no banco de dados. Isso é feito utilizando a biblioteca bcrypt, que gera um hash da senha, evitando o armazenamento da senha em texto simples.
+    
+    Login → Geração e verificação de Token JWT:
+    No momento do login, se a senha fornecida for verificada corretamente, o sistema gera um Token JWT (JSON Web Token). Este token é utilizado para autenticar o usuário nas futuras requisições, garantindo uma comunicação segura entre o cliente e o servidor.
+    
+    Criptografia de Mensagens → Uso de AES (CBC):
+    As mensagens enviadas pelos usuários são criptografadas antes de serem armazenadas. O algoritmo AES (Advanced Encryption Standard) no modo CBC (Cipher Block Chaining) é utilizado para garantir que os dados sejam armazenados de forma segura e inacessível a usuários não autorizados.
+    
+    Proteção da Chave AES → Uso de RSA para criptografar a chave antes de armazená-la:
+    A chave de criptografia do AES é protegida utilizando o algoritmo RSA. A chave RSA é usada para criptografar a chave AES antes de armazená-la, garantindo que mesmo se os dados do sistema forem acessados, a chave AES não possa ser comprometida sem a chave RSA.
+
+FUNCIONALIDADES 
+
+    Cadastro de Usuário:
+    O usuário realiza seu cadastro no sistema.
+    A senha fornecida é protegida com bcrypt, sendo armazenada de forma segura como um hash, evitando que a senha seja armazenada em texto simples.
+    Login:
+    O usuário informa suas credenciais de login.
+    Se a senha informada estiver correta, o sistema gera um Token JWT, que é utilizado para autenticar o usuário em requisições futuras.
+    Enviar Mensagem:
+    O usuário envia uma mensagem através do sistema.
+    A mensagem é criptografada com AES antes de ser armazenada, garantindo que seu conteúdo permaneça seguro.
+    Receber Mensagem:
+    O usuário recebe a mensagem criptografada.
+    Para acessá-la, o usuário descriptografa a chave AES utilizando sua chave RSA, permitindo que ele leia o conteúdo da mensagem de forma segura.
